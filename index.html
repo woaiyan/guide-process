@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="position: relative;height: 2000px">
+<div class="step" style="position: absolute;top: 20px;left: 200px;width: 200px;height: 300px;background: aqua"></div>
+<div class="step" style="position: absolute;top: 500px;left: 150px;width: 100px;height: 300px;background: white"></div>
+<div class="step" style="position: fixed;top: 30px;left: 600px;width: 100px;height: 100px;background: greenyellow"></div>
+<div class="step" style="position: absolute;top: 1000px;left: 20px;width: 400px;height: 300px;background: wheat"></div>
+<script type="module">
+   import GuideProcess from "./lib/index.js";
+   const nodes= document.querySelectorAll(".step");
+   window.guide = new GuideProcess(nodes);
+   guide.start();
+</script>
+</body>
+</html>
