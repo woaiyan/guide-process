@@ -6,14 +6,48 @@
 </head>
 <body style="position: relative;height: 2000px">
 <div class="step" style="position: absolute;top: 20px;left: 200px;width: 200px;height: 300px;background: aqua"></div>
-<div class="step" style="position: absolute;top: 500px;left: 150px;width: 100px;height: 300px;background: white"></div>
+<div class="step" style="position: absolute;top: 500px;left: 150px;width: 100px;height: 300px;background: brown"></div>
 <div class="step" style="position: fixed;top: 30px;left: 600px;width: 100px;height: 100px;background: greenyellow"></div>
 <div class="step" style="position: absolute;top: 1000px;left: 20px;width: 400px;height: 300px;background: wheat"></div>
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.5/esm/createPopper.min.js">
+
+</script>
 <script type="module">
-   import GuideProcess from "./lib/index.js";
-   const nodes= document.querySelectorAll(".step");
-   window.guide = new GuideProcess(nodes);
-   guide.start();
+    // import GuideProcess from './lib/index.esm.js';
+    import createPopper from "https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.5/esm/createPopper.min.js"
+    debugger
+    window.process = {
+        env: {
+            NODE_ENV: "production"
+        }
+    }
+    const nodes = document.querySelectorAll(".step");
+    window.guide = new GuideProcess(nodes, {
+        arrowColor: "red",
+        getTipOption: (step) => {
+            return {}
+        },
+        getTipContent: (step) => {
+            const dom = document.createElement("div");
+            dom.style.width = "200px";
+            dom.style.height = "150px"
+            dom.style.background = "#ffffff";
+            dom.innerText = `this is a test ${step}`;
+            if (step === 1) {
+                return dom
+            }
+            if (step === 2) {
+                return dom
+            }
+            if (step === 3) {
+                return dom
+            }
+            if (step === 4) {
+                return dom
+            }
+        }
+    });
+    guide.start();
 </script>
 </body>
 </html>
