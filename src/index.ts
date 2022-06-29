@@ -161,8 +161,8 @@ interface GuideProcessInterface {
 }
 
 export default class GuideProcess implements GuideProcessInterface {
-    constructor(nodes: HTMLElement[], option: GuideOption) {
-        this.nodes = nodes;
+    constructor(nodes: HTMLElement[] | HTMLCollectionOf<Element>, option: GuideOption) {
+        this.nodes = Array.prototype.slice.call(nodes);
         this.option = option;
         this.initMask();
         this.initGuide();
@@ -336,7 +336,6 @@ export default class GuideProcess implements GuideProcessInterface {
     }
 
     setPosition(animation: boolean): void {
-        debugger;
         const nextPosition = this.getPosition(this.nodes[this.index]);
         if (!animation) {
             this.position = nextPosition;

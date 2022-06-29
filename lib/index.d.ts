@@ -127,7 +127,7 @@ interface GuideProcessInterface {
     destroy: () => void;
 }
 export default class GuideProcess implements GuideProcessInterface {
-    constructor(nodes: HTMLElement[], option: GuideOption);
+    constructor(nodes: HTMLElement[] | HTMLCollectionOf<Element>, option: GuideOption);
     option: GuideOption;
     arrowColor: string;
     defaultTipOption: any;
